@@ -172,7 +172,7 @@ def divide_tree_into_clusters (tree_path, fasta_seqs, dist_matrix, h, o):
         height_values = [h1, h2, h3, h4]
         heights_dict = {"h1": h1,"h2": h2,"h3": h3, "h4": h4}
 
-        print("Tree will be cut on the following heights: ",height_values)
+        print("Tree will be cut on the following heights: ", height_values)
 
         for height_value in height_values:
             if height_value == h1:
@@ -238,35 +238,37 @@ def divide_tree_into_clusters (tree_path, fasta_seqs, dist_matrix, h, o):
     elif h==12:
         q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11 = compute_dozens(seqs_similarity_nums_col)
 
-        h1 = float ((min(seqs_similarity_nums_col) + q1) / 2)
-        h2 = float ( (q1 + q2) / 2 )
-        h3 = float ( (q2 + q3) / 2 )
-        h4 = float ( (q3 + q4) / 2)
-        h5 = float ( (q4 + q5) / 2)
-        h6 = float ( (q5 + q6) / 2 )
-        h7 = float ( (q6 + q7) / 2 )
-        h8 = float ( (q7 + q8) / 2)
-        h9 = float ( (q8 + q9) / 2)
-        h10 = float ( (q9 + q10) / 2 )
-        h11 = float ( (q10 + q11) / 2 )
-        h12 = float ( (q11 + max(seqs_similarity_nums_col)) / 2)
+        # h1 = float ((min(seqs_similarity_nums_col) + q1) / 2)
+        # h2 = float ( (q1 + q2) / 2 )
+        # h3 = float ( (q2 + q3) / 2 )
+        # h4 = float ( (q3 + q4) / 2)
+        # h5 = float ( (q4 + q5) / 2)
+        # h6 = float ( (q5 + q6) / 2 )
+        # h7 = float ( (q6 + q7) / 2 )
+        # h8 = float ( (q7 + q8) / 2)
+        # h9 = float ( (q8 + q9) / 2)
+        # h10 = float ( (q9 + q10) / 2 )
+        # h11 = float ( (q10 + q11) / 2 )
+        # h12 = float ( (q11 + max(seqs_similarity_nums_col)) / 2)
 
-        # h1 = float (tree_len/24)
-        # h2 = float ( h1 + tree_len/12 )
-        # h3 = float ( h2 + tree_len/12 )
-        # h4 = float ( h3 + tree_len/12 )
-        # h5 = float ( h4 + tree_len/12 )
-        # h6 = float ( h5 + tree_len/12 )
-        # h7 = float ( h6 + tree_len/12 )
-        # h8 = float ( h7 + tree_len/12 )
-        # h9 = float ( h8 + tree_len/12 )
-        # h10 = float ( h9 + tree_len/12 )
-        # h11 = float ( h10 + tree_len/12 )
-        # h12 = float ( h11 + tree_len/12 )
+        h1 = float (tree_len/24)
+        h2 = float ( h1 + tree_len/12 )
+        h3 = float ( h2 + tree_len/12 )
+        h4 = float ( h3 + tree_len/12 )
+        h5 = float ( h4 + tree_len/12 )
+        h6 = float ( h5 + tree_len/12 )
+        h7 = float ( h6 + tree_len/12 )
+        h8 = float ( h7 + tree_len/12 )
+        h9 = float ( h8 + tree_len/12 )
+        h10 = float ( h9 + tree_len/12 )
+        h11 = float ( h10 + tree_len/12 )
+        h12 = float ( h11 + tree_len/12 )
 
 
         height_values = [h1, h2, h3, h4,  h5, h6, h7, h8, h9, h10, h11, h12]
-        heights = {"h1": h1,"h2": h2,"h3": h3, "h4": h4, "h5": h5,"h6": h6,"h7": h7, "h8": h8, "h9": h9,"h10": h10,"h11": h11, "h12": h12}
+        heights_dict = {"h1": h1,"h2": h2,"h3": h3, "h4": h4, "h5": h5,"h6": h6,"h7": h7, "h8": h8, "h9": h9,"h10": h10,"h11": h11, "h12": h12}
+
+        print("Tree will be cut on the following heights: ", height_values)
 
         for height_value in height_values:
             if height_value == h1:
@@ -363,4 +365,5 @@ def divide_tree_into_clusters (tree_path, fasta_seqs, dist_matrix, h, o):
         column_name = "Predicted Cluster for h = {}".format(heights_dict[height])
         excel_data[column_name] = excel_data["Sequence ID"].apply(lambda x: cluster_mapping.get("_" + x, "Not Found"))
         excel_data.to_excel(excel_file, index=False)
+
         # print("DONE")
